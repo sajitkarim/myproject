@@ -1,0 +1,9 @@
+<table align="center">
+    <tr *ngIf="employees.length!==0">
+        <td align="center">id</td><td align="center">table</td><td align="center">body</td>
+    </tr>
+    <tr *ngFor="let employee of employees">
+            <td>{{employee.id}}</td><td>{{employee.table}}</td><td>{{employee.body}}</td>
+
+    </tr>
+</table>

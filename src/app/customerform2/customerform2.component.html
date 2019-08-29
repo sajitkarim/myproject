@@ -1,0 +1,125 @@
+<div class="container">
+    <h2>user registration form</h2>
+
+    <form #userForm="ngForm" (ngSubmit)="chiru(userForm.value)">
+        <div class="form-group">
+            <label>name:</label><input type="text" #nameRef="ngModel" required minlength="5" maxlength="12"
+                pattern="[a-z ]+" class="form-control" name="name" ngModel>
+            <div *ngIf="nameRef.errors && (nameRef.dirty||nameRef.touched)" class="alert alert-danger">
+                <div [hidden]="!nameRef.errors.required">
+                    please enter a name
+                </div>
+                <div [hidden]="!nameRef.errors.minlength">
+                    please enter atleast 5 charecters
+                </div>
+                <div [hidden]="!nameRef.errors.pattern">
+                    please enter valid data
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>contact:</label><input type="text" #contactRef="ngModel" required minlength="10" maxlength="13"
+                pattern="[0-9+]+" class="form-control" name="contact" ngModel>
+            <div *ngIf="contactRef.errors && (contactRef.dirty||contactRef.touched)" class="alert alert-danger">
+                <div [hidden]="!contactRef.errors.required">
+                    please enter a valid number
+                </div>
+                <div [hidden]="!contactRef.errors.minlength">
+                    please enter atleast 10 digits
+                </div>
+                <div [hidden]="!contactRef.errors.pattern">
+                    please enter valid data
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>email:</label><input type="text" #emailRef="ngModel" required pattern="[a-z0-9]+@[a-z]+\.(com)" class="form-control" name="email" ngModel>
+            <div *ngIf="emailRef.errors && (emailRef.dirty||contactRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!emailRef.errors.required">
+                        please enter a valid email
+                    </div>
+                    <div [hidden]="!emailRef.errors.minlength">
+                        please enter atleast 5 charecters
+                    </div>
+                    <!-- <div [hidden]="!emailRef.errors.pattern">
+                        please enter valid data
+                    </div> -->
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Gender:
+                <input type="radio" name="gender"/>
+            </label>Male
+
+            <label>
+                <input type="radio" name="gender"/>
+            </label>Female
+            <!-- <div [hidden]="!gender.hasError('required')">
+                The gender is required
+            </div> -->
+        </div>
+        <div class="form-group">
+            <label>courses:</label><input type="checkbox" name="courses">Angular
+            <input type="checkbox" name="courses">java
+            <input type="checkbox" name="courses">dotnet
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <select>
+                <option value="selectage">selectage</option>
+                <option value="18+">18-25 years</option>
+                <option value="18+">26-30 years</option>
+            </select>
+
+        </div>
+
+        <div ngModelGroup="Address">
+            <div class="form-group">
+                <label>street:</label><input type="text" #streetRef="ngModel" required minlength="5" maxlength="20" pattern="[a-zA-Z]+" class="form-control" name="street" ngModel>
+                <div *ngIf="streetRef.errors && (streetRef.dirty||streetRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!streetRef.errors.required">
+                        please enter a street name
+                    </div>
+                    <div [hidden]="!streetRef.errors.minlength">
+                        please enter atleast 5 charecters
+                    </div>
+                    <div [hidden]="!streetRef.errors.pattern">
+                        please enter valid data
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>city:</label><input type="text" #cityRef="ngModel" required minlength="2" maxlength="20" pattern="[a-zA-Z]+" class="form-control" name="city" ngModel>
+                <div *ngIf="cityRef.errors && (cityRef.dirty||cityRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!cityRef.errors.required">
+                        please enter the city name
+                    </div>
+                    <div [hidden]="!cityRef.errors.minlength">
+                        please enter atleast 2 charecters
+                    </div>
+                    <div [hidden]="!cityRef.errors.pattern">
+                        please enter valid data
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>postalcode:</label><input type="text" #postalcodeRef="ngModel" required minlength="1" maxlength="6" pattern="[0-9]+" class="form-control" name="postalcode" ngModel>
+                <div *ngIf="postalcodeRef.errors && (postalcodeRef.dirty||postalcodeRef.touched)" class="alert alert-danger">
+                    <div [hidden]="!postalcodeRef.errors.required">
+                        please enter pincode
+                    </div>
+                    <div [hidden]="!cityRef.errors.minlength">
+                        please enter atleast 6 digits
+                    </div>
+                    <div [hidden]="!cityRef.errors.pattern">
+                        please enter valid data
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-success">submit</button>
+
+    </form>
+</div>
